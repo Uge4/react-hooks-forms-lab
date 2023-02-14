@@ -1,17 +1,29 @@
 import React from "react";
 import { v4 as uuid } from "uuid";
+import ShoppingList from "./ShoppingList";
 
-function ItemForm(props) {
+
+
+function ItemForm({onNewItemName, onNewItemCategory, onAddNewItem}) {
+
   return (
-    <form className="NewItem">
+    
+    <form 
+      className="NewItem" 
+      // onSubmit={(event) => onAddNewItem(event)}>
+      onSubmit={onAddNewItem}>
+
       <label>
         Name:
-        <input type="text" name="name" />
+        <input 
+          type="text" 
+          name="name" 
+          onChange={onNewItemName} />
       </label>
 
       <label>
         Category:
-        <select name="category">
+        <select name="category" onChange={onNewItemCategory}>
           <option value="Produce">Produce</option>
           <option value="Dairy">Dairy</option>
           <option value="Dessert">Dessert</option>
@@ -20,6 +32,7 @@ function ItemForm(props) {
 
       <button type="submit">Add to List</button>
     </form>
+
   );
 }
 
